@@ -22,7 +22,7 @@ The Bank Management System is a Java application developed using Java Swing (JFr
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your_username/bank-management-system.git`
+1. Clone the repository: `https://github.com/SURIYALAKSHMI29/Coding-Raja-Technologies-Internship/tree/Bank_Management(Task_1).git`
 2. Import the project into your IDE (e.g., IntelliJ IDEA, Eclipse).
 3. Set up the MySQL database and configure the connection details in the application code.
 4. Run the application from your IDE.
