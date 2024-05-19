@@ -39,7 +39,7 @@ The Bank Management System is a Java application developed using Java Swing (JFr
 
 ## Contributors
 
-- Suriya Lakshmi M (https://github.com/SURIYALAKSHMI29/Coding-Raja-Technologies-Internship/new/Bank_Management(Task_1).git)
+- Suriya Lakshmi M (https://github.com/SURIYALAKSHMI29)
 
 ## License
 
