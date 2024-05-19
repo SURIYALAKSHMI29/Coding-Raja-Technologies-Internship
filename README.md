@@ -40,7 +40,7 @@ The Library Management System is a Java application developed to manage a librar
 
 ## Contributors
 
-- [Suriya Lakshmi M] (https://github.com/SURIYALAKSHMI29)
+- [Suriya Lakshmi M](https://github.com/SURIYALAKSHMI29)
 
 ## License
 
