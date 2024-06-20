@@ -41,6 +41,3 @@ The Library Management System is a Java application developed to manage a librar
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-
----
