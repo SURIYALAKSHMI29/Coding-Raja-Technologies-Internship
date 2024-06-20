@@ -7,7 +7,7 @@ This repository contains two Java applications:
 The Bank Management System is a Java application developed using Java Swing (JFrame) and MySQL Workbench for the database. 
 It provides authentication functionality and allows users to deposit, withdraw money, and transfer funds between accounts.
 
-## [Library Management System](/tree/Library_Management(Task_2))
+## [Library Management System](../../tree/Library_Management(Task_2))
 
 The Library Management System is a Java application developed to manage a library's operations, including borrowing and returning books, tracking dues, and maintaining borrowing history. 
 It functions as an online book store, allowing users to browse and borrow available books.
