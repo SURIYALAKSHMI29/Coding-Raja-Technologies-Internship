@@ -2,7 +2,7 @@
 
 This repository contains two Java applications:
 
-## [Bank Management System](../tree/bank_management)
+## [Bank Management System](../tree/Bank_Management(Task_1))
 
 The Bank Management System is a Java application developed using Java Swing (JFrame) and MySQL Workbench for the database. 
 It provides authentication functionality and allows users to deposit, withdraw money, and transfer funds between accounts.
