@@ -38,10 +38,9 @@ The Library Management System is a Java application developed to manage a librar
    - Select the book to return.
 5. View borrowing history and track dues if needed.
 
-## Contributors
-
-- [Suriya Lakshmi M](https://github.com/SURIYALAKSHMI29)
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+---
