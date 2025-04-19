@@ -198,6 +198,7 @@ public class new_acc {
     
     void create()
     {
+        System.out.println("Create button clicked");
         String str1 = new String(PF1.getPassword());
         String str2 = new String(PF2.getPassword());
         if(str1.equals(str2))
@@ -211,7 +212,7 @@ public class new_acc {
                 long ph = Long.parseLong(TF3.getText());
                 String add = TF4.getText();
                 String acc = acc_no();
-                String url = "jdbc:mysql://localhost:3306/bank_management";
+                String url = "jdbc:mysql://localhost:3306/bank";
                 try{   
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection c = DriverManager.getConnection(url,"root","Laksh_29");
@@ -224,6 +225,7 @@ public class new_acc {
                 catch(ClassNotFoundException | SQLException e)
                 {
                     e.getStackTrace();
+                    JOptionPane.showMessageDialog(frame, "Error: " + e.getMessage());
                 }
             }
         }

@@ -94,8 +94,8 @@ public class transaction {
                         JOptionPane.showMessageDialog(frame,"Transaction Failed! Account Balance is Insufficient");
                     else
                     {
-                        st.executeUpdate("Update account_details SET balance="+(bal1-bal)+" where acc_no="+acc1);
-                        st.executeUpdate("Update account_details SET balance="+(bal+bal2)+" where acc_no="+acc2);
+                        st.executeUpdate("Update account_details SET balance="+(bal1-bal)+" where acc_no='"+acc1+"'");
+                        st.executeUpdate("Update account_details SET balance="+(bal+bal2)+" where acc_no='"+acc2+"'");
                         LocalDate date = LocalDate.now();
                         
                         st.executeUpdate("insert into transact values('"+date+"','"+acc1+"','"+acc2+"','"+new String(TF3.getText())+"',"+bal+")");

@@ -13,7 +13,7 @@ public class bank_ope {
     Statement ope() throws SQLException, ClassNotFoundException 
     {
         
-            String url = "jdbc:mysql://localhost:3306/bank_management";
+            String url = "jdbc:mysql://localhost:3306/bank";
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c = DriverManager.getConnection(url,"root","Laksh_29");
             Statement st = c.createStatement();
@@ -69,7 +69,7 @@ class deposit extends bank_ope{
                         {
                             r=2;
                             bal1 = rs.getInt(5);
-                            st.executeUpdate("Update account_details SET balance="+(bal+bal1)+" where acc_no="+acc);
+                            st.executeUpdate("Update account_details SET balance="+(bal+bal1)+" where acc_no='"+acc+"'");
                             LocalDate date = LocalDate.now();
                             st.executeUpdate("insert into transact values('"+date+"','deposit','"+acc+"','"+new String(TF3.getText())+"',"+bal+")");
                             JOptionPane.showMessageDialog(frame,"Deposit is Successful");
@@ -202,7 +202,7 @@ class withdrawal extends bank_ope {
                             {
                             r=2;
                             bal1 = rs.getInt(5);
-                            st.executeUpdate("Update account_details SET balance="+(bal1-amt)+" where acc_no="+acc);
+                            st.executeUpdate("Update account_details SET balance="+(bal1-amt)+" where acc_no='"+acc+"'");
                             LocalDate date = LocalDate.now();
                             st.executeUpdate("insert into transact values('"+date+"','"+acc+"','Withdrawal','"+new String(TF2.getText())+"',"+amt+")");
                             JOptionPane.showMessageDialog(frame,"You withdrawed "+amt+" from the account "+acc);
@@ -462,6 +462,7 @@ class loan_app extends bank_ope{
         B1.setText("Apply");
         B1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+                System.out.println("Apply button clicked ");
                 String acc = new String(TF1.getText());
                 String pass = new String(PF.getPassword());
                 int amt, bal, r=1;
@@ -479,9 +480,9 @@ class loan_app extends bank_ope{
                             String str2 = rs.getString(3);
                             if(bal<=amt/2){
                                 int loan = bal/3;
-                                st.executeUpdate("Update account_details SET balance="+(bal+loan)+" where acc_no="+acc);
+                                st.executeUpdate("Update account_details SET balance="+(bal+loan)+" where acc_no='"+acc+"'");
                                 LocalDate date = LocalDate.now();
-                                st.executeUpdate("insert into transact values('"+date+"','loan','"+acc+"','"+str2+"',"+loan+")");
+                                st.executeUpdate("INSERT into transact values('"+date+"','loan','"+acc+"','"+str2+"',"+loan+")");
                                 JOptionPane.showMessageDialog(frame,"Your loan amount "+loan+" has been sanctioned to the account "+acc);
                             }
                             else
