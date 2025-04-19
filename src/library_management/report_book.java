@@ -3,17 +3,20 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.*;
+
 public class report_book {
     JFrame frame = new JFrame("Report Page");
     JLabel L1, L2, L3;
-    JButton B1, B2, B3, B4;
+    JButton B1, B2, B3, B4, addBookBtn;
     JScrollPane jScrollPane2;
     JTable jTable1;
+
     public report_book() {
         frame.setVisible(true);
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     private void initComponents() {
         L1 = new JLabel();
@@ -25,11 +28,12 @@ public class report_book {
         jScrollPane2 = new JScrollPane();
         jTable1 = new JTable();
         B4 = new JButton();
+        addBookBtn = new JButton("Add Book");
 
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         Font f = new Font("Comic Sans MS", 1, 13);
         lib_ope obj = new lib_ope(); 
-        
+
         L1.setFont(new java.awt.Font("Times New Roman", 3, 12));
         L1.setText("Suriya BookStore");
 
@@ -40,8 +44,8 @@ public class report_book {
         B1.setText("Show Book Details");
         B1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                obj.rec(jTable1,1,0);
-                L3.setText("Displaying the available book Details...");
+                obj.rec(jTable1, 1, 0); // Show Book Details
+                L3.setText("Displaying the available book details...");
                 L3.setFont(f);
             }
         });
@@ -50,8 +54,8 @@ public class report_book {
         B2.setText("Show Unreturned Books");
         B2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                obj.rec(jTable1,2,1);
-                L3.setText("Displaying unreturned books Details...");
+                obj.rec(jTable1, 2, 1); // Show Unreturned Books
+                L3.setText("Displaying unreturned books details...");
                 L3.setFont(f);
             }
         });
@@ -60,8 +64,8 @@ public class report_book {
         B3.setText("Borrowing History");
         B3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                obj.rec(jTable1,2,2);
-                L3.setText("Displaying Books returned History");
+                obj.rec(jTable1, 2, 2); // Show Borrowing History
+                L3.setText("Displaying books borrowing history...");
                 L3.setFont(f);
             }
         });
@@ -77,66 +81,114 @@ public class report_book {
             }
         });
 
-        GroupLayout layout = new GroupLayout(frame.getContentPane());
-        frame.getContentPane().setLayout(layout);
+        addBookBtn.setFont(f);
+        addBookBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                // Open AddBookDialog when clicked
+                new AddBookDialog(frame);
+            }
+        });
+
+        frame.setLayout(new BorderLayout());  // Use BorderLayout to position the button
+        JPanel buttonPanel = new JPanel(); 
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));  // To align the button to the right
+        buttonPanel.add(addBookBtn);  // Add the Add Book button to the panel
+
+        frame.add(buttonPanel, BorderLayout.NORTH);  // Add button panel to the top (NORTH)
+        
+        JPanel contentPanel = new JPanel();
+        GroupLayout layout = new GroupLayout(contentPanel);
+        contentPanel.setLayout(layout);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(L1)
+                    .addComponent(L2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(L1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(L2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(L3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(B1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(B2)
-                .addGap(46, 46, 46)
-                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(B4)
-                .addContainerGap())
+                        .addComponent(B1)
+                        .addComponent(B2)
+                        .addComponent(B3))
+                    .addComponent(L3)
+                    .addComponent(jScrollPane2)
+                    .addComponent(B4))
         );
+
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(L1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(L2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+            layout.createSequentialGroup()
+                .addComponent(L1)
+                .addComponent(L2)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(B1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B2, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(L3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 382, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(B1)
+                    .addComponent(B2)
+                    .addComponent(B3))
+                .addComponent(L3)
+                .addComponent(jScrollPane2)
                 .addComponent(B4)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        frame.add(contentPanel, BorderLayout.CENTER);  // Add the content panel to the center
 
         frame.pack();
     } 
+}
 
-    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
-        // TODO add your handling code here:
-    }                                  
+class AddBookDialog extends JDialog {
+    private JTextField titleField, authorField, genreField;
+    private JButton saveButton;
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                                          
+    public AddBookDialog(JFrame parent) {
+        super(parent, "Add New Book", true);
+        setSize(400, 300);
+        setLocationRelativeTo(parent);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel titleLabel = new JLabel("Book Title:");
+        titleField = new JTextField(20);
+        JLabel authorLabel = new JLabel("Author:");
+        authorField = new JTextField(20);
+        JLabel genreLabel = new JLabel("Genre:");
+        genreField = new JTextField(20);
+        saveButton = new JButton("Save");
+
+        gbc.gridx = 0; gbc.gridy = 0; add(titleLabel, gbc);
+        gbc.gridx = 1; add(titleField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 1; add(authorLabel, gbc);
+        gbc.gridx = 1; add(authorField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 3; add(genreLabel, gbc);
+        gbc.gridx = 1; add(genreField, gbc);
+
+        gbc.gridx = 1; gbc.gridy = 4; add(saveButton, gbc);
+
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String title = titleField.getText().trim();
+                String author = authorField.getText().trim();
+                String genre = genreField.getText().trim();
+        
+                if (title.isEmpty() || author.isEmpty() || genre.isEmpty()) {
+                    JOptionPane.showMessageDialog(AddBookDialog.this, "Please fill in all fields.", "Input Error", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                lib_ope obj = new lib_ope(); 
+                boolean success = obj.addBook(title, author, genre);
+
+                if (success) {
+                    JOptionPane.showMessageDialog(AddBookDialog.this, "Book added successfully!");
+                    dispose(); // or clear fields instead
+                } else {
+                    JOptionPane.showMessageDialog(AddBookDialog.this, "Failed to add book.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });        
+
+        setVisible(true);
+    }
 }
